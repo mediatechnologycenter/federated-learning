@@ -1,6 +1,6 @@
 Requirements:
-docker		 		18.* or higher
-docker-compose		1.18 or higher
+- docker: 18 or higher
+- docker-compose: 1.18 or higher
 
 Installation Node_worker:
 1. clone git repo: git clone https://github.com/MTC-ETH/Federated-Learning
