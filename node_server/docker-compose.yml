@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  logspout:
+    image: gliderlabs/logspout:v3
+    command: 'syslog://${SERVER_ADDRESS}:5140/udp'
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+  node_worker:
+    image: mtcpartners/nodeserver:0.1
+    restart: always
+    networks:
+      - webnet
+    environment:
+      - LOGGING_LEVEL
+      - SERVER_ADDRESS
+      - PARTNER_NAME
+    depends_on:
+      - logspout
+networks:
+  webnet:
+    name: webnet
