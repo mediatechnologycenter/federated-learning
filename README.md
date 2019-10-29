@@ -16,4 +16,4 @@ This repository contains the docker-compose files to set up a node server on our
 4. navigate to nodeserver:\
 `cd ../nodeserver`
 5. run docker compose file with environment variables:\
-`SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> LOGGING_LEVEL=20 docker-compose up`
+`SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> CLIENT_SECRET=<secret> LOGGING_LEVEL=20 docker-compose up`
