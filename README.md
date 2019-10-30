@@ -14,13 +14,13 @@ This repository contains the docker-compose files to set up a node server on our
 
 
 ## Installation:
-1. clone git repo:\
+1. Clone git repo:\
 `git clone https://github.com/MTC-ETH/Federated-Learning`
-2. navigate to dummy_data_wrapper:\
+2. Navigate to dummy_data_wrapper:\
 `cd dummy_data_wrapper`
-3. run docker compose file with environment variables:\
+3. Run docker compose file with environment variables:\
 `AWS_ACCESS_KEY_ID=<id we provided> AWS_SECRET_ACCESS_KEY=<key we provided> LOGGING_LEVEL=20 docker-compose up` 
-4. navigate to nodeserver:\
+4. Navigate to nodeserver:\
 `cd ../nodeserver`
-5. run docker compose file with environment variables:\
+5. Run docker compose file with environment variables:\
 `SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> CLIENT_SECRET=<secret> LOGGING_LEVEL=20 docker-compose up`
