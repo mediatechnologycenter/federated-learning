@@ -3,8 +3,15 @@
 This repository contains the docker-compose files to set up a node server on our partners side.
 
 ## Requirements:
+### Software:
 - docker: 18 or higher
 - docker-compose: 1.18 or higher
+### Hardware:
+- 16 Gib Memory
+- 4 CPUs
+- Internet Access
+
+
 
 ## Installation:
 1. clone git repo:\
