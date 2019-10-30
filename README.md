@@ -24,3 +24,7 @@ This repository contains the docker-compose files to set up a node server on our
 `cd ../nodeserver`
 5. Run docker compose file with environment variables:\
 `SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> CLIENT_SECRET=<secret> LOGGING_LEVEL=20 docker-compose up`
+
+
+## Create your own data wrapper:
+The current node server expects the data wrapper to be callable in the docker network `webnet` with name `data_wrapper` on port `80` at route `/train` resp. `/test`. The server expects to get a stream of jsonlines i.e. each line is a valid json.
