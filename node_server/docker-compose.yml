@@ -2,6 +2,7 @@ version: "3.7"
 services:
   logspout:
     image: gliderlabs/logspout:v3
+    restart: always
     command: 'syslog://${SERVER_ADDRESS}:5140/udp'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
@@ -14,6 +15,7 @@ services:
       - LOGGING_LEVEL
       - SERVER_ADDRESS
       - PARTNER_NAME
+      - CLIENT_SECRET
     depends_on:
       - logspout
 networks:
