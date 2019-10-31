@@ -28,6 +28,6 @@ This repository contains the docker-compose files to set up a node server on our
 
 ## Create your own data wrapper:
 The current node server expects the data wrapper to be callable in the docker network `webnet` with name `data_wrapper` on port `80` at route `/train` resp. `/test`. The server expects to get a stream of jsonlines i.e. each line is a valid json.
-See `dummy_data_wrapper/dummy_wrapper.py` as an example.
+See `dummy_data_wrapper/source_code` as an example.
 
-You can test your wrapper by navigating to `data_wrapper_test` and running `docker-compose up`.
+You can test your wrapper by navigating to `data_wrapper_test` and running `docker-compose up` (if no erors occure then it's all good).
