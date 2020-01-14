@@ -19,11 +19,19 @@ This repository contains the docker-compose files to set up a node server on our
 2. Navigate to dummy_data_wrapper:\
 `cd dummy_data_wrapper`
 3. Run docker compose file with environment variables:\
-`AWS_ACCESS_KEY_ID=<id we provided> AWS_SECRET_ACCESS_KEY=<key we provided> LOGGING_LEVEL=20 docker-compose up` 
+`AWS_ACCESS_KEY_ID=<id we provided> AWS_SECRET_ACCESS_KEY=<key we provided> docker-compose up` 
 4. Navigate to nodeserver:\
 `cd ../nodeserver`
 5. Run docker compose file with environment variables:\
-`SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> CLIENT_SECRET=<secret> LOGGING_LEVEL=20 docker-compose up`
+`SERVER_PORT=50000 SERVER_ADDRESS=<server address> PARTNER_NAME=<one of [NZZ,TAMEDIA]> CLIENT_SECRET=<secret> docker-compose up`
+
+### Client Interface
+1. If not already running start data wrapper:
+`AWS_ACCESS_KEY_ID=<id we provided> AWS_SECRET_ACCESS_KEY=<key we provided> docker-compose up` 
+2. Navigate to client_interface:\
+`cd ../client_interface`
+3. Run client_interface docker-compose:
+`PARTNER_NAME="INTERFACE" CLIENT_INTERFACE_PORT="50050" CLIENT_INTERFACE_SERVER_ADDRESS="client_interface"  SERVER="0" SERVER_PORT=50000 SERVER_ADDRESS=<server address> CLIENT_SECRET=<secret> docker-compose up`
 
 
 ## Create your own data wrapper:

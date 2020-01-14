@@ -24,46 +24,52 @@ import json
 import os
 import boto3
 import io
+import random
 
 app = Flask(__name__)
 
 s3 = boto3.client('s3', aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
                   aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'), region_name='eu-central-1')
 
+import codecs
 
 
 def get_s3_file(client, url):
-    bytes_buffer = io.BytesIO()
-    client.download_fileobj('federated-learning-dummy-data', url, Fileobj=bytes_buffer)
-    byte_value = bytes_buffer.getvalue()
-    return json.loads(byte_value.decode())
+    obj = client.get_object(Bucket='federated-learning-dummy-data', Key=url)
+    body = obj['Body']
 
+    data = []
+    i = 0
+    for ln in codecs.getreader('utf-8')(body):
+        if i < 100000:
+            data.append(ln)
 
-# Fetch data from s3 and transform to jsonlines
-def get_data():
-    x_train = get_s3_file(s3, 'new/x_train.json')
-    y_train = get_s3_file(s3, 'new/y_train.json')
-    train = [x_train[i] + [y_train[i]] for i in range(len(y_train))]
-    for i in range(len(train)):
-        train[i] = json.dumps({f"column{k}": value for k, value in enumerate(train[i])})
-
-    x_test = get_s3_file(s3, 'new/x_test.json')
-    y_test = get_s3_file(s3, 'new/y_test.json')
-    test = [x_test[i] + [y_test[i]] for i in range(len(y_test))]
-    for i in range(len(test)):
-        test[i] = json.dumps({f"column{k}": value for k, value in enumerate(test[i])})
-    return train, test
+    return data
 
 
 # Fetch Data
-train, test = get_data()
+train = get_s3_file(s3, 'new/train.json')
+train, validation = train[:int(len(train) * 0.9)], train[int(len(train) * 0.9):]
+
+test = get_s3_file(s3, 'new/test.json')
 
 
 # Route to stream the training data
 @app.route('/train')
 def stream_train_data():
+    random.shuffle(train)
+
     def generate():
         for row in train:
+            yield row + '\n'
+
+    return Response(generate(), mimetype='text/json')
+
+
+@app.route('/validation')
+def stream_validation_data():
+    def generate():
+        for row in validation:
             yield row + '\n'
 
     return Response(generate(), mimetype='text/json')
@@ -75,8 +81,9 @@ def stream_test_data():
     def generate():
         for row in test:
             yield row + '\n'
+
     return Response(generate(), mimetype='text/json')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')

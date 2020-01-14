@@ -1,21 +1,26 @@
-version: "3.7"
+version: "2.4"
 services:
   logspout:
     image: gliderlabs/logspout:v3
     restart: always
-    command: 'syslog://${SERVER_ADDRESS}:5140/udp'
+    command: 'syslog://129.132.15.108:5140/udp'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
   node_worker:
-    image: mtcpartners/nodeserver:0.1
+    image: mtcpartners/nodeserver:0.2
     restart: always
+    mem_limit: 6g
     networks:
       - webnet
     environment:
-      - LOGGING_LEVEL
+      - LOGGING_LEVEL=20
       - SERVER_ADDRESS
+      - SERVER_PORT=50000
       - PARTNER_NAME
       - CLIENT_SECRET
+      - DATA_SOURCE
+      - STATIC_VARIABLES_FILE_PATH
+      - TESTING
     depends_on:
       - logspout
 networks:
