@@ -32,7 +32,7 @@ This repository contains the docker-compose files to set up a node server on our
 `cd ../client_interface`
 3. Run client_interface docker-compose:
 `PARTNER_NAME="INTERFACE" CLIENT_INTERFACE_PORT="50050" CLIENT_INTERFACE_SERVER_ADDRESS="client_interface"  SERVER="0" SERVER_PORT=50000 SERVER_ADDRESS=<server address> CLIENT_SECRET=<secret> docker-compose up`
-
+4. See example/client_interface_example.py for how to use the client interface.
 
 ## Create your own data wrapper:
 The current node server expects the data wrapper to be callable in the docker network `webnet` with name `data_wrapper` on port `80` at route `/train` resp. `/test`. The server expects to get a stream of jsonlines i.e. each line is a valid json.
