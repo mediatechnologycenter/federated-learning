@@ -1,11 +1,5 @@
 version: "2.4"
 services:
-  logspout:
-    image: gliderlabs/logspout:v3
-    restart: always
-    command: 'syslog://129.132.15.108:5140/udp'
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
   node_worker:
     image: mtcpartners/nodeserver:0.2
     restart: always
@@ -21,8 +15,7 @@ services:
       - DATA_SOURCE
       - STATIC_VARIABLES_FILE_PATH
       - TESTING
-    depends_on:
-      - logspout
+      - DATA_WRAPPER_URL
 networks:
   webnet:
     name: webnet

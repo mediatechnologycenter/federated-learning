@@ -4,6 +4,8 @@ services:
     image: mtcpartners/data_wrapper_test:0.1
     networks:
       - webnet
+    environment:
+      - DATA_WRAPPER_URL
 networks:
   webnet:
     name: webnet
