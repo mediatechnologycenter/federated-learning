@@ -1,11 +1,5 @@
 version: "2.4"
 services:
-  #  logspout:
-  #    image: gliderlabs/logspout:v3
-  #    restart: always
-  #    command: 'syslog://${SERVER_ADDRESS}:5140/udp'
-  #    volumes:
-  #      - '/var/run/docker.sock:/var/run/docker.sock'
   client_interface:
     image: mtcpartners/client_interface:0.1
     ports:
@@ -38,8 +32,11 @@ services:
       - DATA_SOURCE
       - STATIC_VARIABLES_FILE_PATH
       - TESTING
-      - DATA_WRAPPER_URL
       - SERVER=0
+      - DP_EPSILON
+      - DP_DELTA
+      - ALLOW_PREPROCESSING
+      - DATA_WRAPPER_URL
     depends_on:
       - client_interface
 networks:

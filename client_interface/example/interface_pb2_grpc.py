@@ -55,8 +55,8 @@ class InterfaceControllerStub(object):
         request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Model.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
         )
-    self.send_loss_response = channel.unary_unary(
-        '/interface.InterfaceController/send_loss_response',
+    self.send_validation_loss_response = channel.unary_unary(
+        '/interface.InterfaceController/send_validation_loss_response',
         request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
         )
@@ -133,7 +133,7 @@ class InterfaceControllerServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def send_loss_response(self, request, context):
+  def send_validation_loss_response(self, request, context):
     """rpc fetch_test_data_response (DefaultRequest) returns (stream JsonData) {
     }
 
@@ -199,8 +199,8 @@ def add_InterfaceControllerServicer_to_server(servicer, server):
           request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Model.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
       ),
-      'send_loss_response': grpc.unary_unary_rpc_method_handler(
-          servicer.send_loss_response,
+      'send_validation_loss_response': grpc.unary_unary_rpc_method_handler(
+          servicer.send_validation_loss_response,
           request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
       ),

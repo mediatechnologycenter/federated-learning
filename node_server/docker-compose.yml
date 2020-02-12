@@ -15,6 +15,9 @@ services:
       - DATA_SOURCE
       - STATIC_VARIABLES_FILE_PATH
       - TESTING
+      - DP_EPSILON
+      - DP_DELTA
+      - ALLOW_PREPROCESSING
       - DATA_WRAPPER_URL
 networks:
   webnet:
