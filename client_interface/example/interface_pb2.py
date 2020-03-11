@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='interface',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n6client_interface_clone/interface_utils/interface.proto\x12\tinterface\"H\n\x17InterfaceStringResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08response\x18\x03 \x01(\t\"M\n\x17InterfaceDefaultRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x03 \x01(\t\x12\x12\n\nmodel_name\x18\x02 \x01(\t\"7\n\x18InterfaceDefaultResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\"e\n\x0eInterfaceModel\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x12\n\nmodel_name\x18\x03 \x01(\t\x12\x0f\n\x07weights\x18\x04 \x01(\x0c\x12\x0e\n\x06\x63onfig\x18\x05 \x01(\x0c\"g\n\x13InterfaceTaskSubmit\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0c\n\x04task\x18\x03 \x01(\t\x12\x10\n\x08protocol\x18\x04 \x01(\t\x12\x10\n\x08model_id\x18\x05 \x01(\t\"@\n\x0f\x44\x65\x66\x61ultResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\"\\\n\x0cTaskResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x0c\n\x04task\x18\x05 \x01(\t\x12\x0f\n\x07task_id\x18\x06 \x01(\t\"Z\n\x12\x45xperimentResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\"j\n\x05Model\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x18\n\x10model_parameters\x18\x06 \x01(\x0c\x12\x18\n\x10model_definition\x18\x07 \x01(\x0c\"R\n\x0fModelIdResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x10\n\x08model_id\x18\x04 \x01(\t\"V\n\x0bTaskRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\"n\n\x04Loss\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x0f\n\x07task_id\x18\x05 \x01(\t\x12\x0c\n\x04loss\x18\x06 \x01(\t\"|\n\x0e\x44\x65\x66\x61ultRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x10\n\x08model_id\x18\x05 \x01(\t\x12\x0f\n\x07task_id\x18\x06 \x01(\t\"}\n\x0bModelUpdate\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x0f\n\x07task_id\x18\x05 \x01(\t\x12\x14\n\x0cmodel_update\x18\x06 \x01(\x0c\x32\x81\x07\n\x13InterfaceController\x12P\n\x07\x64o_task\x12\x1e.interface.InterfaceTaskSubmit\x1a#.interface.InterfaceDefaultResponse\"\x00\x12]\n\x11get_last_response\x12\".interface.InterfaceDefaultRequest\x1a\".interface.InterfaceStringResponse\"\x00\x12V\n\nget_models\x12\".interface.InterfaceDefaultRequest\x1a\".interface.InterfaceStringResponse\"\x00\x12V\n\tstop_task\x12\".interface.InterfaceDefaultRequest\x1a#.interface.InterfaceDefaultResponse\"\x00\x12\x45\n\x10get_task_request\x12\x16.interface.TaskRequest\x1a\x17.interface.TaskResponse\"\x00\x12\x46\n\x13\x66\x65tch_model_request\x12\x19.interface.DefaultRequest\x1a\x10.interface.Model\"\x00\x30\x01\x12O\n\x14train_model_response\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12N\n\x1asend_model_update_response\x12\x10.interface.Model\x1a\x1a.interface.DefaultResponse\"\x00(\x01\x12\x43\n\x12send_validation_loss_response\x12\x0f.interface.Loss\x1a\x1a.interface.DefaultResponse\"\x00\x12J\n\x0ftest_connection\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12H\n\rstop_response\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n6client_interface_clone/interface_utils/interface.proto\x12\tinterface\"H\n\x17InterfaceStringResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08response\x18\x03 \x01(\t\"M\n\x17InterfaceDefaultRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x03 \x01(\t\x12\x12\n\nmodel_name\x18\x02 \x01(\t\"7\n\x18InterfaceDefaultResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\"e\n\x0eInterfaceModel\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x12\n\nmodel_name\x18\x03 \x01(\t\x12\x0f\n\x07weights\x18\x04 \x01(\x0c\x12\x0e\n\x06\x63onfig\x18\x05 \x01(\x0c\"g\n\x13InterfaceTaskSubmit\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x0c\n\x04task\x18\x03 \x01(\t\x12\x10\n\x08protocol\x18\x04 \x01(\t\x12\x10\n\x08model_id\x18\x05 \x01(\t\"T\n\x0f\x44\x65\x66\x61ultResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x12\n\nconditions\x18\x04 \x01(\t\"\\\n\x0cTaskResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x0c\n\x04task\x18\x05 \x01(\t\x12\x0f\n\x07task_id\x18\x06 \x01(\t\"Z\n\x12\x45xperimentResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\"j\n\x05Model\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x18\n\x10model_parameters\x18\x06 \x01(\x0c\x12\x18\n\x10model_definition\x18\x07 \x01(\x0c\"R\n\x0fModelIdResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\n\n\x02ok\x18\x02 \x01(\x08\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x10\n\x08model_id\x18\x04 \x01(\t\"V\n\x0bTaskRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\"n\n\x04Loss\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x0f\n\x07task_id\x18\x05 \x01(\t\x12\x0c\n\x04loss\x18\x06 \x01(\t\"|\n\x0e\x44\x65\x66\x61ultRequest\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x10\n\x08model_id\x18\x05 \x01(\t\x12\x0f\n\x07task_id\x18\x06 \x01(\t\"}\n\x0bModelUpdate\x12\x0e\n\x06\x63lient\x18\x01 \x01(\t\x12\x0e\n\x06secret\x18\x02 \x01(\t\x12\x10\n\x08protocol\x18\x03 \x01(\t\x12\x15\n\rexperiment_id\x18\x04 \x01(\t\x12\x0f\n\x07task_id\x18\x05 \x01(\t\x12\x14\n\x0cmodel_update\x18\x06 \x01(\x0c\x32\xc9\x0b\n\x13InterfaceController\x12P\n\x07\x64o_task\x12\x1e.interface.InterfaceTaskSubmit\x1a#.interface.InterfaceDefaultResponse\"\x00\x12]\n\x11get_last_response\x12\".interface.InterfaceDefaultRequest\x1a\".interface.InterfaceStringResponse\"\x00\x12V\n\nget_models\x12\".interface.InterfaceDefaultRequest\x1a\".interface.InterfaceStringResponse\"\x00\x12V\n\tstop_task\x12\".interface.InterfaceDefaultRequest\x1a#.interface.InterfaceDefaultResponse\"\x00\x12\x45\n\x10get_task_request\x12\x16.interface.TaskRequest\x1a\x17.interface.TaskResponse\"\x00\x12\x46\n\x13\x66\x65tch_model_request\x12\x19.interface.DefaultRequest\x1a\x10.interface.Model\"\x00\x30\x01\x12O\n\x14train_model_response\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12T\n\x1asend_model_update_response\x12\x16.interface.ModelUpdate\x1a\x1a.interface.DefaultResponse\"\x00(\x01\x12H\n\rsend_datasets\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12N\n\x1dsend_validation_loss_response\x12\x0f.interface.Loss\x1a\x1a.interface.DefaultResponse\"\x00\x12I\n\x18send_train_loss_response\x12\x0f.interface.Loss\x1a\x1a.interface.DefaultResponse\"\x00\x12H\n\x17send_test_loss_response\x12\x0f.interface.Loss\x1a\x1a.interface.DefaultResponse\"\x00\x12J\n\x0ftest_connection\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12V\n\x1bstopped_experiment_response\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12U\n\x1a\x66\x61iled_experiment_response\x12\x19.interface.DefaultRequest\x1a\x1a.interface.DefaultResponse\"\x00\x12M\n\x0fstop_experiment\x12\x19.interface.DefaultRequest\x1a\x1d.interface.ExperimentResponse\"\x00\x12N\n\x10start_experiment\x12\x19.interface.DefaultRequest\x1a\x1d.interface.ExperimentResponse\"\x00\x12R\n\x17get_latest_global_model\x12\x19.interface.DefaultRequest\x1a\x1a.interface.ModelIdResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -300,6 +300,13 @@ _DEFAULTRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='conditions', full_name='interface.DefaultResponse.conditions', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -313,7 +320,7 @@ _DEFAULTRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=487,
-  serialized_end=551,
+  serialized_end=571,
 )
 
 
@@ -371,8 +378,8 @@ _TASKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=553,
-  serialized_end=645,
+  serialized_start=573,
+  serialized_end=665,
 )
 
 
@@ -423,8 +430,8 @@ _EXPERIMENTRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=647,
-  serialized_end=737,
+  serialized_start=667,
+  serialized_end=757,
 )
 
 
@@ -482,8 +489,8 @@ _MODEL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=739,
-  serialized_end=845,
+  serialized_start=759,
+  serialized_end=865,
 )
 
 
@@ -534,8 +541,8 @@ _MODELIDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=847,
-  serialized_end=929,
+  serialized_start=867,
+  serialized_end=949,
 )
 
 
@@ -586,8 +593,8 @@ _TASKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=931,
-  serialized_end=1017,
+  serialized_start=951,
+  serialized_end=1037,
 )
 
 
@@ -652,8 +659,8 @@ _LOSS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1019,
-  serialized_end=1129,
+  serialized_start=1039,
+  serialized_end=1149,
 )
 
 
@@ -718,8 +725,8 @@ _DEFAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1255,
+  serialized_start=1151,
+  serialized_end=1275,
 )
 
 
@@ -784,8 +791,8 @@ _MODELUPDATE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1257,
-  serialized_end=1382,
+  serialized_start=1277,
+  serialized_end=1402,
 )
 
 DESCRIPTOR.message_types_by_name['InterfaceStringResponse'] = _INTERFACESTRINGRESPONSE
@@ -910,8 +917,8 @@ _INTERFACECONTROLLER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1385,
-  serialized_end=2282,
+  serialized_start=1405,
+  serialized_end=2886,
   methods=[
   _descriptor.MethodDescriptor(
     name='do_task',
@@ -981,14 +988,41 @@ _INTERFACECONTROLLER = _descriptor.ServiceDescriptor(
     full_name='interface.InterfaceController.send_model_update_response',
     index=7,
     containing_service=None,
-    input_type=_MODEL,
+    input_type=_MODELUPDATE,
+    output_type=_DEFAULTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='send_datasets',
+    full_name='interface.InterfaceController.send_datasets',
+    index=8,
+    containing_service=None,
+    input_type=_DEFAULTREQUEST,
     output_type=_DEFAULTRESPONSE,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
     name='send_validation_loss_response',
     full_name='interface.InterfaceController.send_validation_loss_response',
-    index=8,
+    index=9,
+    containing_service=None,
+    input_type=_LOSS,
+    output_type=_DEFAULTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='send_train_loss_response',
+    full_name='interface.InterfaceController.send_train_loss_response',
+    index=10,
+    containing_service=None,
+    input_type=_LOSS,
+    output_type=_DEFAULTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='send_test_loss_response',
+    full_name='interface.InterfaceController.send_test_loss_response',
+    index=11,
     containing_service=None,
     input_type=_LOSS,
     output_type=_DEFAULTRESPONSE,
@@ -997,19 +1031,55 @@ _INTERFACECONTROLLER = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='test_connection',
     full_name='interface.InterfaceController.test_connection',
-    index=9,
+    index=12,
     containing_service=None,
     input_type=_DEFAULTREQUEST,
     output_type=_DEFAULTRESPONSE,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='stop_response',
-    full_name='interface.InterfaceController.stop_response',
-    index=10,
+    name='stopped_experiment_response',
+    full_name='interface.InterfaceController.stopped_experiment_response',
+    index=13,
     containing_service=None,
     input_type=_DEFAULTREQUEST,
     output_type=_DEFAULTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='failed_experiment_response',
+    full_name='interface.InterfaceController.failed_experiment_response',
+    index=14,
+    containing_service=None,
+    input_type=_DEFAULTREQUEST,
+    output_type=_DEFAULTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='stop_experiment',
+    full_name='interface.InterfaceController.stop_experiment',
+    index=15,
+    containing_service=None,
+    input_type=_DEFAULTREQUEST,
+    output_type=_EXPERIMENTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='start_experiment',
+    full_name='interface.InterfaceController.start_experiment',
+    index=16,
+    containing_service=None,
+    input_type=_DEFAULTREQUEST,
+    output_type=_EXPERIMENTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='get_latest_global_model',
+    full_name='interface.InterfaceController.get_latest_global_model',
+    index=17,
+    containing_service=None,
+    input_type=_DEFAULTREQUEST,
+    output_type=_MODELIDRESPONSE,
     serialized_options=None,
   ),
 ])

@@ -1,10 +1,10 @@
 version: "2.4"
 services:
-  data_wrapper:
-    image: mtcpartners/dummy_data_wrapper:0.3
+  data_wrapper_old:
+    image: mtcpartners/dummy_data_wrapper:0.2
     restart: always
     ports:
-       - "80:80"
+       - "12345:80"
     mem_limit: 8g
     networks:
       - webnet

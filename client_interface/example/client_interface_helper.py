@@ -1,16 +1,20 @@
-# Copyright 2015 gRPC authors.
+# Copyright 2019-2020, ETH Zurich, Media Technology Center
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
+# This file is part of Federated Learning Project at MTC.
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+# Federated Learning is a free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# Federated Learning is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser Public License for more details.
+#
+# You should have received a copy of the GNU Lesser Public License
+# along with Federated Learning.  If not, see <https://www.gnu.org/licenses/>.
+
 """The Python implementation of the GRPC globalserver.Greeter client."""
 import time
 import os
@@ -24,10 +28,11 @@ import interface_pb2, interface_pb2_grpc
 
 
 class ClientInterface():
-    def __init__(self, server_port=os.getenv('SERVER_PORT', '50050'),
-                 server_address=os.getenv('SERVER_ADDRESS', '0.0.0.0')):
+    def __init__(self, server_port=os.getenv('SERVER_PORT'),
+                 server_address=os.getenv('SERVER_ADDRESS', '0.0.0.0'),secret=os.getenv("CLIENT_SECRET")):
         self.server_port = server_port
         self.server_address = server_address
+        self.secret=secret
         try:
             channel = grpc.insecure_channel(f"{self.server_address}:{self.server_port}")
             self.stub = interface_pb2_grpc.InterfaceControllerStub(channel)
@@ -42,10 +47,10 @@ class ClientInterface():
         logging.info(task)
         task_submitted = self.stub.do_task(
             interface_pb2.InterfaceTaskSubmit(task=task, client='INTERFACE', protocol='NN',
-                                              model_id=params.get('model_id', '')))
+                                              model_id=params.get('model_id', ''),secret=self.secret))
         timer = 0
         while True:
-            worker_idle = self.stub.do_task(interface_pb2.InterfaceTaskSubmit(task='', client='INTERFACE'))
+            worker_idle = self.stub.do_task(interface_pb2.InterfaceTaskSubmit(task='', client='INTERFACE',secret=self.secret))
             if worker_idle.ok:
                 break
             else:
@@ -55,11 +60,11 @@ class ClientInterface():
             if timer > timeout:
                 raise Exception("timed out for task {task}")
 
-        task_response = self.stub.get_last_response(interface_pb2.InterfaceTaskSubmit(client='INTERFACE'))
+        task_response = self.stub.get_last_response(interface_pb2.InterfaceTaskSubmit(client='INTERFACE',secret=self.secret))
         return task_response
 
     def get_available_models(self):
-        response = self.stub.get_models(interface_pb2.DefaultRequest(client='INTERFACE'))
+        response = self.stub.get_models(interface_pb2.DefaultRequest(client='INTERFACE',secret=self.secret))
         return json.loads(response.response)
 
     def array_from_bytes(self, bytes_array):
@@ -85,7 +90,7 @@ class ClientInterface():
 
     def get_model(self, model_id):
         response = self.stub.fetch_model_request(
-            interface_pb2.DefaultRequest(client='INTERFACE', task_id='fetch_task', model_id=model_id))
+            interface_pb2.DefaultRequest(client='INTERFACE', task_id='fetch_task', model_id=model_id,secret=self.secret))
 
         for row in response:
             config = json.loads(row.model_definition)

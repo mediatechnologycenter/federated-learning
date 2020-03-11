@@ -1,15 +1,15 @@
 version: "2.4"
 services:
   node_worker:
-    image: mtcpartners/nodeserver:0.2
-    restart: always
+    image: mtcpartners/nodeserver:0.3
+#    restart: always
     mem_limit: 6g
     networks:
       - webnet
     environment:
       - LOGGING_LEVEL=20
       - SERVER_ADDRESS
-      - SERVER_PORT=50000
+      - SERVER_PORT
       - PARTNER_NAME
       - CLIENT_SECRET
       - DATA_SOURCE
@@ -19,6 +19,7 @@ services:
       - DP_DELTA
       - ALLOW_PREPROCESSING
       - DATA_WRAPPER_URL
+
 networks:
   webnet:
     name: webnet

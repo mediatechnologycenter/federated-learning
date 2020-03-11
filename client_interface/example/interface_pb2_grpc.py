@@ -52,11 +52,26 @@ class InterfaceControllerStub(object):
         )
     self.send_model_update_response = channel.stream_unary(
         '/interface.InterfaceController/send_model_update_response',
-        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Model.SerializeToString,
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ModelUpdate.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
+        )
+    self.send_datasets = channel.unary_unary(
+        '/interface.InterfaceController/send_datasets',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
         )
     self.send_validation_loss_response = channel.unary_unary(
         '/interface.InterfaceController/send_validation_loss_response',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
+        )
+    self.send_train_loss_response = channel.unary_unary(
+        '/interface.InterfaceController/send_train_loss_response',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
+        )
+    self.send_test_loss_response = channel.unary_unary(
+        '/interface.InterfaceController/send_test_loss_response',
         request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
         )
@@ -65,10 +80,30 @@ class InterfaceControllerStub(object):
         request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
         )
-    self.stop_response = channel.unary_unary(
-        '/interface.InterfaceController/stop_response',
+    self.stopped_experiment_response = channel.unary_unary(
+        '/interface.InterfaceController/stopped_experiment_response',
         request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
         response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
+        )
+    self.failed_experiment_response = channel.unary_unary(
+        '/interface.InterfaceController/failed_experiment_response',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.FromString,
+        )
+    self.stop_experiment = channel.unary_unary(
+        '/interface.InterfaceController/stop_experiment',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ExperimentResponse.FromString,
+        )
+    self.start_experiment = channel.unary_unary(
+        '/interface.InterfaceController/start_experiment',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ExperimentResponse.FromString,
+        )
+    self.get_latest_global_model = channel.unary_unary(
+        '/interface.InterfaceController/get_latest_global_model',
+        request_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.SerializeToString,
+        response_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ModelIdResponse.FromString,
         )
 
 
@@ -133,11 +168,30 @@ class InterfaceControllerServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def send_validation_loss_response(self, request, context):
-    """rpc fetch_test_data_response (DefaultRequest) returns (stream JsonData) {
-    }
+  def send_datasets(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
-    """
+  def send_validation_loss_response(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def send_train_loss_response(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def send_test_loss_response(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -149,9 +203,37 @@ class InterfaceControllerServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def stop_response(self, request, context):
+  def stopped_experiment_response(self, request, context):
+    """For Node Controller
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def failed_experiment_response(self, request, context):
     # missing associated documentation comment in .proto file
     pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def stop_experiment(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def start_experiment(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def get_latest_global_model(self, request, context):
+    """For Predictor
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -196,11 +278,26 @@ def add_InterfaceControllerServicer_to_server(servicer, server):
       ),
       'send_model_update_response': grpc.stream_unary_rpc_method_handler(
           servicer.send_model_update_response,
-          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Model.FromString,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ModelUpdate.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
+      ),
+      'send_datasets': grpc.unary_unary_rpc_method_handler(
+          servicer.send_datasets,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
       ),
       'send_validation_loss_response': grpc.unary_unary_rpc_method_handler(
           servicer.send_validation_loss_response,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
+      ),
+      'send_train_loss_response': grpc.unary_unary_rpc_method_handler(
+          servicer.send_train_loss_response,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
+      ),
+      'send_test_loss_response': grpc.unary_unary_rpc_method_handler(
+          servicer.send_test_loss_response,
           request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.Loss.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
       ),
@@ -209,10 +306,30 @@ def add_InterfaceControllerServicer_to_server(servicer, server):
           request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
       ),
-      'stop_response': grpc.unary_unary_rpc_method_handler(
-          servicer.stop_response,
+      'stopped_experiment_response': grpc.unary_unary_rpc_method_handler(
+          servicer.stopped_experiment_response,
           request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
           response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
+      ),
+      'failed_experiment_response': grpc.unary_unary_rpc_method_handler(
+          servicer.failed_experiment_response,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultResponse.SerializeToString,
+      ),
+      'stop_experiment': grpc.unary_unary_rpc_method_handler(
+          servicer.stop_experiment,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ExperimentResponse.SerializeToString,
+      ),
+      'start_experiment': grpc.unary_unary_rpc_method_handler(
+          servicer.start_experiment,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ExperimentResponse.SerializeToString,
+      ),
+      'get_latest_global_model': grpc.unary_unary_rpc_method_handler(
+          servicer.get_latest_global_model,
+          request_deserializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.DefaultRequest.FromString,
+          response_serializer=client__interface__clone_dot_interface__utils_dot_interface__pb2.ModelIdResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
