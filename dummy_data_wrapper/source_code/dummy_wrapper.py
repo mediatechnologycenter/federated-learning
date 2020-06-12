@@ -42,6 +42,8 @@ def get_s3_file(client, url):
     for ln in codecs.getreader('utf-8')(body):
         if i < 100000:
             data.append(json.loads(ln))
+        else:
+            return data
         i = i + 1
     return data
 
@@ -113,7 +115,7 @@ available_data_sets = {'1': {'train': train, 'test': test, 'validation': validat
 
 
 # Route to stream the training data
-@app.route('/get_available_datasets')
+@app.route('/get_available_datasets', methods=['GET'])
 def stream_train_data():
     return jsonify(available_data_sets_metadata)
 
