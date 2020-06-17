@@ -47,7 +47,9 @@ with requests.get(f"{os.getenv('DATA_WRAPPER_URL', 'http://data_wrapper/')}"
         row = json.loads(chunk)
 
         for feature in dataset_metadata_json["features"]:
-            assert feature["feature"] in row
+            if feature["feature"] not in row:
+                logging.warning("not all features present in data row")
+                continue
             if feature["type"] == 'categorical':
                 if row[feature["feature"]] not in feature["categories"]:
                     logging.warning(f'feature {row[feature["feature"]]} is not in feature meta '
