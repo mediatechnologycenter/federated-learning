@@ -39,15 +39,15 @@ The script will do a get request on `{DATA_WRAPPER_URL}train` (old data wrapper)
 4. See example/client_interface_example.py for how to use the client interface.
 
 ## Create your own data wrapper:
-The node server expects the data wrapper to be callable (by get request) in the docker network `webnet` with name `data_wrapper` on port `80`. The specifications of the expected endpoints are below.
+The node server expects the data wrapper to be callable (by get request) in the docker network `webnet` with name `data_wrapper` on port `80`. The specifications of the expected endpoints are below. You can set `DATA_WRAPPER_URL` to define custom data wrapper url.
 
 See `dummy_data_wrapper/source_code` as an example. Feel free to add your wrapper to this repository.
 
-You can test your wrapper by navigating to `data_wrapper_test` resp. `data_wrapper_test_old` and running `docker-compose up` (if no errors occure then it's all good). Again you can set `DATA_WRAPPER_URL` to define custom data wrapper url.
+You can test your wrapper by navigating to `data_wrapper_test` (resp. `data_wrapper_test_old` for the deprecated version) and running `docker-compose up` (if no errors occure then it's all good).
 
 ### Specification
 **Function endoint**: `<data_wrapper_url>/get_available_datasets`: 
-This endpoint is to get all available datasets. One dataset can contain up to three subdatasets (splits) i.e. one for train,validation and test. These are callable with the endpoint below.
+This endpoint returns all available datasets. One dataset can contain up to three subdatasets (splits) i.e. one for training, validation and test. These are callable with the endpoint below.
 * _Input_: - 
 * _Expection output_: List of metadata jsons for each available dataset . i.e:
   * ```json
