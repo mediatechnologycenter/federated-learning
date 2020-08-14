@@ -61,7 +61,7 @@ This endpoint returns all available datasets. One dataset can contain up to thre
   * _description_: Meta description of the dataset: Extraction Period, anything extraordinary about the data. 
   * _samples_num_: First integer is the number of samples in the training split of the dataset, the second the number of samples in the validation split and third the number of samples in the test split. This number can be 0 uif for example no test data is present. We will set the batch size/epochs/steps_per_epochs dependent on this number. 
   * _creation_date_: Creation date of the data set (ISO-8601) 
-  * _features_: List containing metadata about each feature of the dataset. This is used on the client to add noise to the streamed data. You can create this list with the function `create_feature_metadata_json` we provide here the new data-wrapper dummy `data_wrapper_dummy/source_code/dummy_wrapper.py`. Each element of the list is a json looking as follows:
+  * _features_: List containing metadata about each feature of the dataset. This is used on the client to add noise to the streamed data. You can create this list with the function `create_feature_metadata_json` we provide in the new data-wrapper dummy `data_wrapper_dummy/source_code/dummy_wrapper.py`. Each element of the list is a json looking as follows:
     ```json
     {"feature":" <feature_name>", 
     "categories": ["<name_of_class_1>","<name_of_class_2>",...], 
