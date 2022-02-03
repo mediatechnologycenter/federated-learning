@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   client_interface:
-    image: mtcpartners/client_interface:0.2
+    image: ethmediatechnologycenter/client_interface:0.2
     ports:
       - "50050:50050"
     restart: always
@@ -18,7 +18,7 @@ services:
       - CLIENT_SECRET
       - SERVER=0
   node_worker_interface:
-    image: mtcpartners/nodeserver:0.3
+    image: ethmediatechnologycenter/nodeserver:0.3
     mem_limit: 6g
     restart: always
     networks:
